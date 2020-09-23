@@ -18,7 +18,9 @@ span{color: #4491de;}
 border-radius: 15px;
 font-family: 'Times New Roman', Times, serif;
 }
-
+form{
+font-family: 'Times New Roman', Times, serif;
+}
 #button{
 background-color: #4491de;
 color: #ffffff;
@@ -26,6 +28,8 @@ width: 100%;
 border-radius: 15px;
 border-style: 3px solid;
 border-color: #ffffff;
+font-weight: bold;
+font-size: large;
 }
 h2{
 font-family: 'Times New Roman', Times, serif;
@@ -33,15 +37,34 @@ font-size: xx-large;
 font-weight: bold;
 color: black;
 }
+#heading-two{
+font-family: 'Times New Roman', Times, serif;
+font-size: xx-large;
+font-weight: bold;
+color: #4491de;
+}
 #input{
 border-radius: 15px;
 }
 #butto{
-
 height: 50px;
 margin: 1pc;
 font-weight: bolder;
 border-radius: 25px;
+}
+#butto1{
+height: 50px;
+/* margin: 1pc; */
+font-weight: bolder;
+border-radius: 25px;
+}
+
+#butto2{
+height: 50px;
+/* margin: 1pc; */
+font-weight: bolder;
+border-radius: 25px;
+
 }
 #butt{
 width: 100%;

@@ -12,7 +12,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Grid from "@material-ui/core/Grid";
 import "../Signup.css";
 
-export default function SignUp() {
+export default function Booking() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -28,11 +28,8 @@ export default function SignUp() {
   //const classes = useStyles();
   return (
     <div>
-      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        ORDER
-      </Button> */}
-      <Button variant="danger" id="butt" onClick={handleClickOpen}>
-        Create a Free account
+      <Button variant="success" id="butt" onClick={handleClickOpen}>
+        Book space
       </Button>
       <Dialog
         open={open}
@@ -40,56 +37,75 @@ export default function SignUp() {
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">
-          Login to book your space
+          Please fill in the following to book your space.
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="dailog-content">
-            <p>Welcome Back</p>
+            <p>Welcome! </p>
           </DialogContentText>
           <Grid item xs={12} sm={12}>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <h2>Sign Up</h2>
-              <Form.Label>Name:</Form.Label>
+              <h2 id="heading-two">Glad you're here,</h2>
+              <Form.Label>Your Church</Form.Label>
               <Form.Control
-                type="text"
+                as="select"
+                custom
+                // type="text"
                 name="example"
                 id="input"
                 ref={register}
-              />
-              <Form.Label>Contact:</Form.Label>
+              >
+                <option>Coming Soon</option>
+                <option>Also coming soon</option>
+                <option>Wait your church to register</option>
+                <option>Select</option>
+                <option>Your church will appear here</option>
+              </Form.Control>
+              <Form.Label>Service slot</Form.Label>
               <Form.Control
-                type="text"
+                as="select"
+                custom
+                // type="text"
                 name="example"
                 id="input"
                 ref={register}
-              />
-              <Form.Label>Email address:</Form.Label>
+              >
+                <option>Morning</option>
+                <option>After noon</option>
+                <option>Evening</option>
+                {/* <option>4</option>
+                <option>5</option> */}
+              </Form.Control>
+
+              <Form.Label>Number of seats</Form.Label>
               <Form.Control
-                type="email"
+                as="select"
+                custom
+                // type="text"
                 name="example"
                 id="input"
                 ref={register}
-              />
-              <Form.Label>Set Password:</Form.Label>
-              <Form.Control
-                type="text"
+                required
+              >
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>You can only make a max of 5 seats</option>
+              </Form.Control>
+              {/* <input
                 name="exampleRequired"
-                id="input"
                 ref={register({ required: true })}
-              />
+              /> */}
+              {/* errors will return when field validation fails  */}
               {errors.exampleRequired && <span>This field is required</span>}
               <br></br>
-              <p>
-                By signing in you agree with the terms of service and privacy
-              </p>
+              <br></br>
               <Button type="submit" id="button">
-                Sign Up
+                Book
               </Button>
             </form>
-            <br></br>
-            {/* <p>
-              Already have an account? <a href="#">Login</a>
-            </p> */}
           </Grid>
         </DialogContent>
         <DialogActions>
