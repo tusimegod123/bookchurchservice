@@ -44,7 +44,7 @@ export default function SignUp() {
               <span> Church Services in Uganda</span>
             </h3>
             <p>
-              Simply Register with your details and search for your church and
+             Avoid being bounced back from not attending church service because you are the extra 71 person. Simply Register with your details and search for your church and
               book a slot to be part of a specified service at your Church.
             </p>
 
