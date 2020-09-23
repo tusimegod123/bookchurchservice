@@ -7,8 +7,8 @@ import { Form } from "react-bootstrap";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
+//import DialogContentText from "@material-ui/core/DialogContentText";
+//import DialogTitle from "@material-ui/core/DialogTitle";
 import Grid from "@material-ui/core/Grid";
 import "../Signup.css";
 
@@ -39,13 +39,13 @@ export default function SignUp() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">
-          Login to book your space
-        </DialogTitle>
+        {/* <DialogTitle id="form-dialog-title">
+        
+        </DialogTitle> */}
         <DialogContent>
-          <DialogContentText id="dailog-content">
+          {/* <DialogContentText id="dailog-content">
             <p>Welcome Back</p>
-          </DialogContentText>
+          </DialogContentText> */}
           <Grid item xs={12} sm={12}>
             <form onSubmit={handleSubmit(onSubmit)}>
               <h2>Sign Up</h2>
@@ -87,9 +87,9 @@ export default function SignUp() {
               </Button>
             </form>
             <br></br>
-            {/* <p>
-              Already have an account? <a href="#">Login</a>
-            </p> */}
+            <p>
+              Already have an account? <a href="/login">Login</a>
+            </p>
           </Grid>
         </DialogContent>
         <DialogActions>

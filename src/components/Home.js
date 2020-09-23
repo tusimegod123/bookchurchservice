@@ -110,9 +110,9 @@ export default function Home() {
               </Button>
             </form>
             <br></br>
-            {/* <p>
-              Already have an account? <a href="#">Login</a>
-            </p> */}
+            <p>
+              Already have an account? <a href="/login">Login</a>
+            </p>
           </Paper>
         </Grid>
       </Grid>
