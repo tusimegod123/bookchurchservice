@@ -1,0 +1,73 @@
+
+#intro{
+/* font-family: 'Times New Roman', Times, serif; */
+/* height: 510px; */
+padding: 3pc;
+}
+h3{
+/* font: inherit; */
+/* font-family: Proxima Nova, sans-serif; */
+color: black;
+/* font-size: x-large; */
+font-weight: bold;
+
+}
+span{color: #4491de;}
+#signup{
+ height: 555px; 
+border-radius: 15px;
+font-family: 'Times New Roman', Times, serif;
+}
+
+#button{
+background-color: #4491de;
+color: #ffffff;
+width: 100%;
+border-radius: 15px;
+border-style: 3px solid;
+border-color: #ffffff;
+}
+h2{
+font-family: 'Times New Roman', Times, serif;
+font-size: xx-large;
+font-weight: bold;
+color: black;
+}
+#input{
+border-radius: 15px;
+}
+#butto{
+
+height: 50px;
+margin: 1pc;
+font-weight: bolder;
+border-radius: 25px;
+}
+#butt{
+width: 100%;
+/* height: 50px; */
+/* margin: 1pc; */
+font-weight: bolder;
+border-radius: 25px;
+}
+.main-image{
+width: 70%;
+margin-left: 40px;
+}
+#marque{
+color: #4491de;
+font-family: 'Times New Roman', Times, serif;
+font-size: larger;
+font-weight: bold;
+}
+
+#footer{
+text-align: center;
+font-family: 'Times New Roman', Times, serif;
+background-color:#104e4b;
+color: white;
+height: 40px;
+}
+#footer-link{
+color: #ffffff;
+}
