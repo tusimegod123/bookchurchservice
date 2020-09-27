@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
@@ -19,34 +20,66 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
 }));
-export default function Login() {
-  const { register, handleSubmit, watch, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
 
-  console.log(watch("example")); // watch input value by passing the name of it
+export default function Login() {
+  const [phone, setPhone] = React.useState();
+  const [password, setPassword] = React.useState();
+
+  const handlePhoneChange = (e) => {
+    setPhone(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const loginDetails = {
+      phone: phone,
+      password: password,
+      //  comfirmPassword: "",
+    };
+    console.log(loginDetails);
+    axios.post("http://localhost:8000/logindetails", loginDetails).then(
+      (response) => {
+        console.log(response);
+        window.location = "/signup";
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+  const { register, watch, errors } = useForm();
+  // const onSubmit = (data) => console.log(data);
+  console.log(watch("password")); // watch input value by passing the name of it
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={2}></Grid>   
+        <Grid item xs={12} sm={4}></Grid>
         <Grid item xs={12} sm={4}>
           <Paper className={classes.paper} id="signup">
             {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit}>
               <h2>Login</h2>
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Phone Number:</Form.Label>
               <Form.Control
                 type="text"
-                name="example"
+                name="phone"
                 id="input"
+                onChange={handlePhoneChange}
                 ref={register}
               />
-              <Form.Label>Email address</Form.Label>
+              <Form.Label>Password:</Form.Label>
               <Form.Control
-                type="text"
+                type="password"
                 id="input"
-                name="example"
-                ref={register}
+                // value="hghgjghgj"
+                name="password"
+                required
+                onChange={handlePasswordChange}
+                ref={register({ required: true })}
               />
               {/* <input
                 name="exampleRequired"
@@ -58,6 +91,9 @@ export default function Login() {
               <Button type="submit" id="button">
                 Login
               </Button>
+              <p>
+                Don't have an account?? <a href="/signup">Signup</a>
+              </p>
             </form>
           </Paper>
         </Grid>

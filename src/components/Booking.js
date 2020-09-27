@@ -10,10 +10,25 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Grid from "@material-ui/core/Grid";
+import axios from "axios";
 import "../Signup.css";
 
 export default function Booking() {
   const [open, setOpen] = React.useState(false);
+  const [churchname, setChurchName] = React.useState();
+  const [service, setService] = React.useState();
+  const [numberOfseats, setSeat] = React.useState();
+
+  const handlenameChange = (e) => {
+    setChurchName(e.target.value);
+  };
+   const handleserviceChange = (e) => {
+     setService(e.target.value);
+   };
+ const handleseatChange = (e) => {
+   setSeat(e.target.value);
+ };
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -22,8 +37,28 @@ export default function Booking() {
   const handleClose = () => {
     setOpen(false);
   };
-  const { register, handleSubmit, watch, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const myBookingData = {
+      churchName: churchname,
+      service: service,
+      numberOfseats: numberOfseats,
+    };
+   // console.log(myBookingData);
+    axios.post("http://localhost:8000/booking", myBookingData).then(
+      (response) => {
+        console.log(response);
+        window.location = "/login";
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
+
+  const { register, watch, errors } = useForm();
+  // const onSubmit = (data) => console.log(data);
   console.log(watch("example")); // watch input value by passing the name of it
   //const classes = useStyles();
   return (
@@ -44,30 +79,32 @@ export default function Booking() {
             <p>Welcome! </p>
           </DialogContentText>
           <Grid item xs={12} sm={12}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit}>
               <h2 id="heading-two">Glad you're here,</h2>
-              <Form.Label>Your Church</Form.Label>
+              <Form.Label>Your Church or Mosque:</Form.Label>
               <Form.Control
                 as="select"
                 custom
                 // type="text"
-                name="example"
+                name="churchName"
                 id="input"
+                onChange={handlenameChange}
                 ref={register}
               >
                 <option>Coming Soon</option>
                 <option>Also coming soon</option>
-                <option>Wait your church to register</option>
+                <option>Wait your church or Mosque to register</option>
                 <option>Select</option>
                 <option>Your church will appear here</option>
               </Form.Control>
-              <Form.Label>Service slot</Form.Label>
+              <Form.Label>Service slot:</Form.Label>
               <Form.Control
                 as="select"
                 custom
                 // type="text"
-                name="example"
+                name="service"
                 id="input"
+                onChange={handleserviceChange}
                 ref={register}
               >
                 <option>Morning</option>
@@ -77,14 +114,15 @@ export default function Booking() {
                 <option>5</option> */}
               </Form.Control>
 
-              <Form.Label>Number of seats</Form.Label>
+              <Form.Label>Number of seats:</Form.Label>
               <Form.Control
                 as="select"
                 custom
                 // type="text"
-                name="example"
+                name="numberOfseats"
                 id="input"
                 ref={register}
+                onChange={handleseatChange}
                 required
               >
                 <option>1</option>

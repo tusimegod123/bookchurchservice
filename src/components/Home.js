@@ -6,6 +6,7 @@ import { Button } from "react-bootstrap";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import axios from "axios";
 import Book from "./Book";
 import Booking from "./Booking";
 import Signup from "./SignUp";
@@ -25,11 +26,50 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function Home() {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, watch, errors } = useForm();
   const onSubmit = (data) => console.log(data);
 
   console.log(watch("example")); // watch input value by passing the name of it
+
+  const [name, setName] = React.useState();
+  const [contact, setContact] = React.useState();
+  const [email, setEmail] = React.useState();
+  const [password, setPassword] = React.useState();
+
+  const handlenameChange = (e) => {
+    setName(e.target.value);
+  };
+  const handlecontactChange = (e) => {
+    setContact(e.target.value);
+  };
+  const handleemailChange = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlepasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const myUserData = {
+      fullName: name,
+      contact: contact,
+      email: email,
+      password: password,
+      //  comfirmPassword: "",
+    };
+    // console.log(myUserData);
+    axios.post("http://localhost:8000/user", myUserData).then(
+      (response) => {
+        console.log(response);
+        window.location = "/login";
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  };
   const classes = useStyles();
+
   return (
     <div className={classes.root}>
       <marquee id="marque">
@@ -43,13 +83,13 @@ export default function Home() {
           <Paper className={classes.paper} id="intro">
             <h3>
               Online Booking System for your{" "}
-              <span> Church Services in Uganda</span>
+              <span> Church or Mosque Services in Uganda</span>
             </h3>
             <p>
               Avoid being bounced back from not attending church service because
-              you are the extra 71 person. Simply Register with your details and
-              search for your church and book a slot to be part of a specified
-              service at your Church.
+              you are the extra 71st person. Simply Register with your details
+              and search for your Church or Mosque and book a slot to be part of
+              a specified service at your Church or Mosque.
             </p>
 
             <Button variant="danger" id="butto1">
@@ -70,34 +110,38 @@ export default function Home() {
         </Grid>
         <Grid item xs={12} sm={4}>
           <Paper className={classes.paper} id="signup">
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit}>
               <h2>Sign Up</h2>
               <Form.Label>Name:</Form.Label>
               <Form.Control
                 type="text"
-                name="example"
+                name="fullName"
                 id="input"
+                onChange={handlenameChange}
                 ref={register}
               />
               <Form.Label>Contact:</Form.Label>
               <Form.Control
                 type="text"
-                name="example"
+                name="contact"
+                onChange={handlecontactChange}
                 id="input"
                 ref={register}
               />
               <Form.Label>Email address:</Form.Label>
               <Form.Control
                 type="email"
-                name="example"
+                name="email"
                 id="input"
+                onChange={handleemailChange}
                 ref={register}
               />
               <Form.Label>Set Password:</Form.Label>
               <Form.Control
                 type="text"
-                name="exampleRequired"
+                name="password"
                 id="input"
+                onChange={handlepasswordChange}
                 ref={register({ required: true })}
               />
               {errors.exampleRequired && <span>This field is required</span>}
