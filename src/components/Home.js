@@ -82,21 +82,23 @@ export default function Home() {
         <Grid item xs={12} sm={12}>
           <Paper className={classes.paper} id="intro">
             <h3>
-              Online Booking System for your{" "}<br></br>
+              Online Booking System for your <br></br>
               <span> Church or Mosque Services in Uganda</span>
             </h3>
             <p id="home-paragraph">
-              Avoid being bounced back from not attending church service because<br></br>
-              you are the extra 71st person. Simply Register with your details<br></br>
-              and search for your Church or Mosque and book a slot to be part of<br></br>
-              a specified service at your Church or Mosque.
+              Avoid being bounced back from not attending church service because
+              <br></br>
+              you are the extra 71st person. Simply Register with your details
+              <br></br>
+              and search for your Church or Mosque and book a slot to be part of
+              <br></br>a specified service at your Church or Mosque.
             </p>
 
             {/* <Button variant="danger" id="butto1"> */}
-              <Signup />
+            <Signup />
             {/* </Button> */}
             {/* <Button  variant="success" id="butto"> */}
-              <Book />
+            <Book />
             {/* </Button> */}
             {/* <Button variant="success" id="butto2">
               <Booking />
@@ -170,6 +172,12 @@ export default function Home() {
         <a href="tel:+256759755313" id="footer-link">
           {" "}
           +2567013938916
+        </a>
+        <br></br>
+        And Thembo Charles call him on{" "}
+        <a href="tel:+256787444081" id="footer-link">
+          {" "}
+          +256787444081
         </a>
       </footer>
     </div>
