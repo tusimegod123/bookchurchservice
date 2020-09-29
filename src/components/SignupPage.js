@@ -1,25 +1,31 @@
 import React from "react";
-// import Button from "@material-ui/core/Button";
-import { Button } from "react-bootstrap";
-//import TextField from "@material-ui/core/TextField";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Form } from "react-bootstrap";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-//import DialogContentText from "@material-ui/core/DialogContentText";
-//import DialogTitle from "@material-ui/core/DialogTitle";
+import { Button } from "react-bootstrap";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import axios from "axios";
-import "../Signup.css";
 
-export default function SignUp() {
-  const [open, setOpen] = React.useState(false);
+import "../Signup.css";
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "left",
+    // width:400,
+    //height: 500,
+    color: theme.palette.text.secondary,
+  },
+}));
+
+export default function SignupPage() {
   const [name, setName] = React.useState();
   const [contact, setContact] = React.useState();
   const [email, setEmail] = React.useState();
   const [password, setPassword] = React.useState();
-
   const handlenameChange = (e) => {
     setName(e.target.value);
   };
@@ -32,52 +38,39 @@ export default function SignUp() {
   const handlepasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const myUserData = {
-      fullName: name,
-      contact: contact,
-      email: email,
-      password: password,
-      //  comfirmPassword: "",
-    };
-    // console.log(myUserData);
-    axios.post("http://localhost:8000/user", myUserData).then(
-      (response) => {
-        console.log(response);
-        window.location = "/login";
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  };
-
+    
+   const handleSubmit = (event) => {
+     event.preventDefault();
+     const myUserData = {
+       fullName: name,
+       contact: contact,
+       email: email,
+       password: password,
+       //  comfirmPassword: "",
+     };
+     console.log(myUserData);
+     axios.post("http://localhost:8000/logindetails", myUserData).then(
+       (response) => {
+         console.log(response);
+         window.location = "/book";
+       },
+       (error) => {
+         console.log(error);
+       }
+     );
+   };
   const { register, watch, errors } = useForm();
   // const onSubmit = (data) => console.log(data);
-  console.log(watch("email")); // watch input value by passing the name of it
-  //const classes = useStyles();
+  console.log(watch("password")); // watch input value by passing the name of it
+
+  const classes = useStyles();
   return (
-    <div>
-      <Button variant="danger" id="butto1" onClick={handleClickOpen}>
-        + Create a Free account
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="form-dialog-title"
-      >
-        <DialogContent>
-          <Grid item xs={12} sm={12}>
+    <div className={classes.root}>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={4}></Grid>
+        <Grid item xs={12} sm={4}>
+          <Paper className={classes.paper} id="signup">
+            {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
             <form onSubmit={handleSubmit}>
               <h2>Sign Up</h2>
               <Form.Label>Name:</Form.Label>
@@ -129,17 +122,9 @@ export default function SignUp() {
             <p>
               Already have an account? <a href="/login">Login</a>
             </p>
-          </Grid>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} variant="danger">
-            Cancel
-          </Button>
-          {/* <Button onClick={handleClose} color="primary">
-            Place Order
-          </Button> */}
-        </DialogActions>
-      </Dialog>
+          </Paper>
+        </Grid>
+      </Grid>
     </div>
   );
 }

@@ -2,7 +2,14 @@
 #intro{
 /* font-family: 'Times New Roman', Times, serif; */
 /* height: 510px; */
-padding: 3pc;
+/* padding: 3pc; */
+background-image:url("./static/images/background.jpg");
+text-align: center;
+font-size: x-large;
+}
+#home-paragraph{
+color: #ffffff;
+font-family: 'Times New Roman', Times, serif;
 }
 h3{
 /* font: inherit; */
@@ -48,6 +55,7 @@ border-radius: 15px;
 }
 #butto{
 height: 50px;
+width: 20%;
 margin: 1pc;
 font-weight: bolder;
 border-radius: 25px;
@@ -74,7 +82,7 @@ font-weight: bolder;
 border-radius: 25px;
 }
 .main-image{
-width: 70%;
+width: 90%;
 margin-left: 40px;
 }
 #marque{

@@ -42,7 +42,7 @@ export default function Login() {
     axios.post("http://localhost:8000/logindetails", loginDetails).then(
       (response) => {
         console.log(response);
-        window.location = "/signup";
+        window.location = "/book";
       },
       (error) => {
         console.log(error);
@@ -70,6 +70,7 @@ export default function Login() {
                 id="input"
                 onChange={handlePhoneChange}
                 ref={register}
+                required
               />
               <Form.Label>Password:</Form.Label>
               <Form.Control
@@ -92,7 +93,7 @@ export default function Login() {
                 Login
               </Button>
               <p>
-                Don't have an account?? <a href="/signup">Signup</a>
+                Don't have an account?? <a href="/signuppage">Signup</a>
               </p>
             </form>
           </Paper>

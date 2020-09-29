@@ -10,7 +10,7 @@ export default function Navigation() {
       <>
         <Navbar collapseOnSelect expand="lg" id="navbar" fixed="top">
           <Navbar.Brand href="/" id="navbar">
-            Book.Ch+Service
+            Ibada
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

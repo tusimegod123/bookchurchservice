@@ -43,7 +43,7 @@ export default function Book() {
    axios.post("http://localhost:8000/logindetails", loginDetails).then(
      (response) => {
        console.log(response);
-       window.location = "/signup";
+       window.location = "/book";
      },
      (error) => {
        console.log(error);
@@ -56,7 +56,7 @@ export default function Book() {
   //const classes = useStyles();
   return (
     <div>
-      <Button id="butt" onClick={handleClickOpen}>
+      <Button variant="success" id="butto" onClick={handleClickOpen}>
         Login
       </Button>
       <Dialog
@@ -82,6 +82,7 @@ export default function Book() {
                 id="input"
                 onChange={handlePhoneChange}
                 //ref={register}
+                required
               />
               <Form.Label>Password:</Form.Label>
               <Form.Control
@@ -90,19 +91,15 @@ export default function Book() {
                 name="password"
                 onChange={handlePasswordChange}
                 ref={register({ required: true })}
+                required
               />
-              {/* <input
-                name="exampleRequired"
-                ref={register({ required: true })}
-              /> */}
-              {/* errors will return when field validation fails  */}
               {errors.exampleRequired && <span>This field is required</span>}
               <br></br>
               <Button type="submit" id="button">
                 Login
               </Button>
               <p>
-                Don't have an account?? <a href="/signup">Signup</a>
+                Don't have an account?? <a href="/signuppage">Signup</a>
               </p>
             </form>
           </Grid>

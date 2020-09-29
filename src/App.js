@@ -4,13 +4,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/Navbar";
 import Home from "./components/Home";
 import Login from "./components/Login"
-import './App.css';
+//import './App.css';
 import SignUp from './components/SignUp';
 import Booking from './components/Booking';
+import SignupPage from './components/SignupPage';
 //import Book from './components/Book';
 
 function App() {
-   const [user, setuser] = useState({});
+   const [ setuser] = useState({});
   useEffect(() => {
     axios
       .get("/hello")
@@ -31,6 +32,7 @@ function App() {
           <Route path="/signup" component={SignUp}></Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/book" component={Booking}></Route>
+          <Route pathn="/signuppage" component={SignupPage}></Route>
         </Switch>
       </Router>
     </div>
