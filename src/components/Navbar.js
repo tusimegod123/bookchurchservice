@@ -23,9 +23,9 @@ export default function Navigation() {
               </Nav.Link>
             </Nav>
             <Nav>
-              <Nav.Link href="#deets" id="navbar">
+              {/* <Nav.Link href="#deets" id="navbar">
                 +256701398916
-              </Nav.Link>
+              </Nav.Link> */}
               {/* <Nav.Link eventKey={2} href="#memes">
                 Dank memes
               </Nav.Link> */}
