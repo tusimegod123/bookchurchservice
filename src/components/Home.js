@@ -165,7 +165,7 @@ export default function Home() {
           </Paper>
         </Grid> */}
       </Grid>
-      <p></p>
+      {/* <p></p> */}
       <footer id="footer">
         {" "}
         &copy; Designed and developed by Tusime Godwin call me on{" "}
